@@ -1,0 +1,1278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ParshvnathModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ParshvnathModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="ParshvnathModel.Store.Admin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AreaDetail" EntityType="ParshvnathModel.Store.AreaDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CityDetail" EntityType="ParshvnathModel.Store.CityDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HoardingHistory" EntityType="ParshvnathModel.Store.HoardingHistory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HoardingMaster" EntityType="ParshvnathModel.Store.HoardingMaster" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ReceiptDetail" EntityType="ParshvnathModel.Store.ReceiptDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubAreaDetail" EntityType="ParshvnathModel.Store.SubAreaDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserDetail" EntityType="ParshvnathModel.Store.UserDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="vwAdvanceHoardingDetails" EntityType="ParshvnathModel.Store.vwAdvanceHoardingDetails" store:Type="Views" store:Schema="dbo" store:Name="vwAdvanceHoardingDetails">
+            <DefiningQuery>SELECT 
+      [vwAdvanceHoardingDetails].[CompanyName] AS [CompanyName], 
+      [vwAdvanceHoardingDetails].[FromDate] AS [FromDate], 
+      [vwAdvanceHoardingDetails].[ToDate] AS [ToDate], 
+      [vwAdvanceHoardingDetails].[Amount] AS [Amount], 
+      [vwAdvanceHoardingDetails].[IsExpired] AS [IsExpired], 
+      [vwAdvanceHoardingDetails].[Type] AS [Type], 
+      [vwAdvanceHoardingDetails].[BannerName] AS [BannerName], 
+      [vwAdvanceHoardingDetails].[HoadingHistoryID] AS [HoadingHistoryID], 
+      [vwAdvanceHoardingDetails].[IsActive] AS [IsActive], 
+      [vwAdvanceHoardingDetails].[IsDeleted] AS [IsDeleted], 
+      [vwAdvanceHoardingDetails].[IsPermanent] AS [IsPermanent], 
+      [vwAdvanceHoardingDetails].[HoardingMasterID] AS [HoardingMasterID], 
+      [vwAdvanceHoardingDetails].[MinDate] AS [MinDate]
+      FROM [dbo].[vwAdvanceHoardingDetails] AS [vwAdvanceHoardingDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwHoardingDetails" EntityType="ParshvnathModel.Store.vwHoardingDetails" store:Type="Views" store:Schema="dbo" store:Name="vwHoardingDetails">
+            <DefiningQuery>SELECT 
+      [vwHoardingDetails].[CompanyName] AS [CompanyName], 
+      [vwHoardingDetails].[FromDate] AS [FromDate], 
+      [vwHoardingDetails].[ToDate] AS [ToDate], 
+      [vwHoardingDetails].[Amount] AS [Amount], 
+      [vwHoardingDetails].[IsExpired] AS [IsExpired], 
+      [vwHoardingDetails].[Type] AS [Type], 
+      [vwHoardingDetails].[BannerName] AS [BannerName], 
+      [vwHoardingDetails].[HoadingHistoryID] AS [HoadingHistoryID], 
+      [vwHoardingDetails].[IsActive] AS [IsActive], 
+      [vwHoardingDetails].[IsDeleted] AS [IsDeleted], 
+      [vwHoardingDetails].[IsPermanent] AS [IsPermanent], 
+      [vwHoardingDetails].[HoardingMasterID] AS [HoardingMasterID], 
+      [vwHoardingDetails].[MaxDate] AS [MaxDate]
+      FROM [dbo].[vwHoardingDetails] AS [vwHoardingDetails]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AreaDetail_CityDetail" Association="ParshvnathModel.Store.FK_AreaDetail_CityDetail">
+            <End Role="CityDetail" EntitySet="CityDetail" />
+            <End Role="AreaDetail" EntitySet="AreaDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingHistory_HoardingMaster" Association="ParshvnathModel.Store.FK_HoardingHistory_HoardingMaster">
+            <End Role="HoardingMaster" EntitySet="HoardingMaster" />
+            <End Role="HoardingHistory" EntitySet="HoardingHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingHistory_UserDetail" Association="ParshvnathModel.Store.FK_HoardingHistory_UserDetail">
+            <End Role="UserDetail" EntitySet="UserDetail" />
+            <End Role="HoardingHistory" EntitySet="HoardingHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingMaster_AreaDetail" Association="ParshvnathModel.Store.FK_HoardingMaster_AreaDetail">
+            <End Role="AreaDetail" EntitySet="AreaDetail" />
+            <End Role="HoardingMaster" EntitySet="HoardingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingMaster_CityDetail" Association="ParshvnathModel.Store.FK_HoardingMaster_CityDetail">
+            <End Role="CityDetail" EntitySet="CityDetail" />
+            <End Role="HoardingMaster" EntitySet="HoardingMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubAreaDetail_AreaDetail" Association="ParshvnathModel.Store.FK_SubAreaDetail_AreaDetail">
+            <End Role="AreaDetail" EntitySet="AreaDetail" />
+            <End Role="SubAreaDetail" EntitySet="SubAreaDetail" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime2" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime2" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="AreaDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="Area" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="CityDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="HoardingHistory">
+          <Key>
+            <PropertyRef Name="HoadingHistoryID" />
+          </Key>
+          <Property Name="HoadingHistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="HoardingMasterID" Type="int" />
+          <Property Name="FromDate" Type="datetime2" />
+          <Property Name="ToDate" Type="datetime2" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="BannerName" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreatedDate" Type="datetime2" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedBy" Type="datetime2" />
+          <Property Name="UpdatedDate" Type="datetime2" />
+          <Property Name="IsPermanent" Type="bit" />
+          <Property Name="IsExpired" Type="bit" />
+          <Property Name="IsRenewed" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="HoardingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="SubAreaID" Type="int" />
+          <Property Name="HoardingNo" Type="int" />
+          <Property Name="HoardingSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="ReceiptNo" />
+          </Key>
+          <Property Name="ReceiptNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReceiptDate" Type="datetime2" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="money" />
+        </EntityType>
+        <EntityType Name="SubAreaDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AreaID" Type="int" />
+          <Property Name="SubArea" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime2" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime2" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Parshva.dbo.vwAdvanceHoardingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwAdvanceHoardingDetails">
+          <Key>
+            <PropertyRef Name="HoadingHistoryID" />
+          </Key>
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FromDate" Type="datetime2" />
+          <Property Name="ToDate" Type="datetime2" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="IsExpired" Type="bit" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="BannerName" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoadingHistoryID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsPermanent" Type="bit" />
+          <Property Name="HoardingMasterID" Type="int" />
+          <Property Name="MinDate" Type="datetime2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'Parshva.dbo.vwHoardingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="vwHoardingDetails">
+          <Key>
+            <PropertyRef Name="HoadingHistoryID" />
+          </Key>
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FromDate" Type="datetime2" />
+          <Property Name="ToDate" Type="datetime2" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="IsExpired" Type="bit" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="BannerName" Type="nvarchar" MaxLength="200" />
+          <Property Name="HoadingHistoryID" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="IsPermanent" Type="bit" />
+          <Property Name="HoardingMasterID" Type="int" />
+          <Property Name="MaxDate" Type="datetime2" />
+        </EntityType>
+        <Association Name="FK_AreaDetail_CityDetail">
+          <End Role="CityDetail" Type="ParshvnathModel.Store.CityDetail" Multiplicity="1" />
+          <End Role="AreaDetail" Type="ParshvnathModel.Store.AreaDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AreaDetail">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingHistory_HoardingMaster">
+          <End Role="HoardingMaster" Type="ParshvnathModel.Store.HoardingMaster" Multiplicity="0..1" />
+          <End Role="HoardingHistory" Type="ParshvnathModel.Store.HoardingHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoardingMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoardingHistory">
+              <PropertyRef Name="HoardingMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingHistory_UserDetail">
+          <End Role="UserDetail" Type="ParshvnathModel.Store.UserDetail" Multiplicity="0..1" />
+          <End Role="HoardingHistory" Type="ParshvnathModel.Store.HoardingHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="HoardingHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingMaster_AreaDetail">
+          <End Role="AreaDetail" Type="ParshvnathModel.Store.AreaDetail" Multiplicity="0..1" />
+          <End Role="HoardingMaster" Type="ParshvnathModel.Store.HoardingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoardingMaster">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingMaster_CityDetail">
+          <End Role="CityDetail" Type="ParshvnathModel.Store.CityDetail" Multiplicity="0..1" />
+          <End Role="HoardingMaster" Type="ParshvnathModel.Store.HoardingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoardingMaster">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubAreaDetail_AreaDetail">
+          <End Role="AreaDetail" Type="ParshvnathModel.Store.AreaDetail" Multiplicity="0..1" />
+          <End Role="SubAreaDetail" Type="ParshvnathModel.Store.SubAreaDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubAreaDetail">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CheckPermanentEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime2" Mode="In" />
+          <Parameter Name="toDate" Type="datetime2" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="hoardingMasterID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CheckPermanentEntryForUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime2" Mode="In" />
+          <Parameter Name="toDate" Type="datetime2" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="hoardingMasterID" Type="int" Mode="In" />
+          <Parameter Name="hoardingHistoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CheckTemporaryEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime2" Mode="In" />
+          <Parameter Name="toDate" Type="datetime2" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="hoardingMasterID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="CheckTemporaryEntryForUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime2" Mode="In" />
+          <Parameter Name="toDate" Type="datetime2" Mode="In" />
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="hoardingMasterID" Type="int" Mode="In" />
+          <Parameter Name="hoardingHistoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ExpireHoarding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ExpireTemporaryHoarding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAdvanceHoardingDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetAllHoardingEntry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetHoardingDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetHoardingEntryByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HoardingHistoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetHoardingMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetHoardingMasterByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="IsHoardingExsist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SubAreaID" Type="int" Mode="In" />
+          <Parameter Name="HoardingNo" Type="int" Mode="In" />
+          <Parameter Name="AreaID" Type="int" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParshvnathModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ParshvnathEntities" p1:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetHoardingDetails" ReturnType="Collection(ParshvnathModel.GetHoardingDetails_Result)" />
+          <FunctionImport Name="GetHoardingMaster" ReturnType="Collection(ParshvnathModel.GetHoardingMaster_Result)" />
+          <FunctionImport Name="CheckPermanentEntry" ReturnType="Collection(ParshvnathModel.CheckPermanentEntry_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="hoardingMasterID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckTemporaryEntry" ReturnType="Collection(ParshvnathModel.CheckTemporaryEntry_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="hoardingMasterID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetHoardingMasterByID" ReturnType="Collection(ParshvnathModel.GetHoardingMasterByID_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="IsHoardingExsist" ReturnType="Collection(ParshvnathModel.IsHoardingExsist_Result)">
+            <Parameter Name="SubAreaID" Mode="In" Type="Int32" />
+            <Parameter Name="HoardingNo" Mode="In" Type="Int32" />
+            <Parameter Name="AreaID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Admins" EntityType="ParshvnathModel.Admin" />
+          <EntitySet Name="AreaDetails" EntityType="ParshvnathModel.AreaDetail" />
+          <EntitySet Name="CityDetails" EntityType="ParshvnathModel.CityDetail" />
+          <EntitySet Name="HoardingHistories" EntityType="ParshvnathModel.HoardingHistory" />
+          <EntitySet Name="ReceiptDetails" EntityType="ParshvnathModel.ReceiptDetail" />
+          <EntitySet Name="SubAreaDetails" EntityType="ParshvnathModel.SubAreaDetail" />
+          <EntitySet Name="UserDetails" EntityType="ParshvnathModel.UserDetail" />
+          <AssociationSet Name="FK_AreaDetail_CityDetail" Association="ParshvnathModel.FK_AreaDetail_CityDetail">
+            <End Role="CityDetail" EntitySet="CityDetails" />
+            <End Role="AreaDetail" EntitySet="AreaDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubAreaDetail_AreaDetail" Association="ParshvnathModel.FK_SubAreaDetail_AreaDetail">
+            <End Role="AreaDetail" EntitySet="AreaDetails" />
+            <End Role="SubAreaDetail" EntitySet="SubAreaDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingHistory_UserDetail" Association="ParshvnathModel.FK_HoardingHistory_UserDetail">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="HoardingHistory" EntitySet="HoardingHistories" />
+          </AssociationSet>
+          <EntitySet Name="HoardingMasters" EntityType="ParshvnathModel.HoardingMaster" />
+          <AssociationSet Name="FK_HoardingMaster_AreaDetail" Association="ParshvnathModel.FK_HoardingMaster_AreaDetail">
+            <End Role="AreaDetail" EntitySet="AreaDetails" />
+            <End Role="HoardingMaster" EntitySet="HoardingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingMaster_CityDetail" Association="ParshvnathModel.FK_HoardingMaster_CityDetail">
+            <End Role="CityDetail" EntitySet="CityDetails" />
+            <End Role="HoardingMaster" EntitySet="HoardingMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoardingHistory_HoardingMaster" Association="ParshvnathModel.FK_HoardingHistory_HoardingMaster">
+            <End Role="HoardingMaster" EntitySet="HoardingMasters" />
+            <End Role="HoardingHistory" EntitySet="HoardingHistories" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllHoardingEntry" ReturnType="Collection(ParshvnathModel.GetAllHoardingEntry_Result)" />
+          <FunctionImport Name="GetHoardingEntryByID" ReturnType="Collection(ParshvnathModel.GetHoardingEntryByID_Result)" >
+          <Parameter Name="HoardingHistoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckPermanentEntryForUpdate" ReturnType="Collection(ParshvnathModel.CheckPermanentEntryForUpdate_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="hoardingMasterID" Mode="In" Type="Int32" />
+            <Parameter Name="hoardingHistoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="CheckTemporaryEntryForUpdate" ReturnType="Collection(ParshvnathModel.CheckTemporaryEntryForUpdate_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="hoardingMasterID" Mode="In" Type="Int32" />
+            <Parameter Name="hoardingHistoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="vwAdvanceHoardingDetails" EntityType="ParshvnathModel.vwAdvanceHoardingDetail" />
+          <EntitySet Name="vwHoardingDetails" EntityType="ParshvnathModel.vwHoardingDetail" />
+          <FunctionImport Name="ExpireHoarding" />
+          <FunctionImport Name="ExpireTemporaryHoarding" />
+          <FunctionImport Name="GetAdvanceHoardingDetails" ReturnType="Collection(ParshvnathModel.GetAdvanceHoardingDetails_Result)" />
+          </EntityContainer>
+        <ComplexType Name="GetHoardingDetails_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SubArea" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+          <Property Type="Int32" Name="SubAreaID" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetHoardingMaster_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+          <Property Type="Int32" Name="SubAreaID" Nullable="true" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SubArea" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CheckPermanentEntry_Result">
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="Int32" Name="HoardingMasterID" Nullable="true" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewed" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedBy" Nullable="true" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CheckTemporaryEntry_Result">
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="Int32" Name="HoardingMasterID" Nullable="true" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewed" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedBy" Nullable="true" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetHoardingMasterByID_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+          <Property Type="Int32" Name="SubAreaID" Nullable="true" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SubArea" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="IsHoardingExsist_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+          <Property Type="Int32" Name="SubAreaID" Nullable="true" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Precision="7" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="7" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+        </EntityType>
+        <EntityType Name="AreaDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="String" Name="Area" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <NavigationProperty Name="CityDetail" Relationship="ParshvnathModel.FK_AreaDetail_CityDetail" FromRole="AreaDetail" ToRole="CityDetail" />
+          <NavigationProperty Name="SubAreaDetails" Relationship="ParshvnathModel.FK_SubAreaDetail_AreaDetail" FromRole="AreaDetail" ToRole="SubAreaDetail" />
+          <NavigationProperty Name="HoardingMasters" Relationship="ParshvnathModel.FK_HoardingMaster_AreaDetail" FromRole="AreaDetail" ToRole="HoardingMaster" />
+        </EntityType>
+        <EntityType Name="CityDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CityName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <NavigationProperty Name="AreaDetails" Relationship="ParshvnathModel.FK_AreaDetail_CityDetail" FromRole="CityDetail" ToRole="AreaDetail" />
+          <NavigationProperty Name="HoardingMasters" Relationship="ParshvnathModel.FK_HoardingMaster_CityDetail" FromRole="CityDetail" ToRole="HoardingMaster" />
+        </EntityType>
+        <EntityType Name="HoardingHistory">
+          <Key>
+            <PropertyRef Name="HoadingHistoryID" />
+          </Key>
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" />
+          <Property Type="Int32" Name="HoardingMasterID" />
+          <Property Type="DateTime" Name="FromDate" Precision="7" />
+          <Property Type="DateTime" Name="ToDate" Precision="7" />
+          <Property Type="Decimal" Name="Amount" Precision="19" Scale="4" />
+          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BannerName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Precision="7" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="UpdatedBy" Precision="7" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="7" />
+          <Property Type="Boolean" Name="IsPermanent" />
+          <Property Type="Boolean" Name="IsExpired" />
+          <Property Type="Boolean" Name="IsRenewed" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <NavigationProperty Name="UserDetail" Relationship="ParshvnathModel.FK_HoardingHistory_UserDetail" FromRole="HoardingHistory" ToRole="UserDetail" />
+          <NavigationProperty Name="HoardingMaster" Relationship="ParshvnathModel.FK_HoardingHistory_HoardingMaster" FromRole="HoardingHistory" ToRole="HoardingMaster" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="ReceiptNo" />
+          </Key>
+          <Property Type="Int32" Name="ReceiptNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="ReceiptDate" Precision="7" />
+          <Property Type="String" Name="CompanyName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Amount" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="SubAreaDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="AreaID" />
+          <Property Type="String" Name="SubArea" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <NavigationProperty Name="AreaDetail" Relationship="ParshvnathModel.FK_SubAreaDetail_AreaDetail" FromRole="SubAreaDetail" ToRole="AreaDetail" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CompanyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PersonName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneNo" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CompanyAddress" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreatedDate" Precision="7" />
+          <Property Type="Int32" Name="CreatedBy" />
+          <Property Type="DateTime" Name="UpdatedDate" Precision="7" />
+          <Property Type="Int32" Name="UpdatedBy" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <NavigationProperty Name="HoardingHistories" Relationship="ParshvnathModel.FK_HoardingHistory_UserDetail" FromRole="UserDetail" ToRole="HoardingHistory" />
+        </EntityType>
+        <Association Name="FK_AreaDetail_CityDetail">
+          <End Type="ParshvnathModel.CityDetail" Role="CityDetail" Multiplicity="1" />
+          <End Type="ParshvnathModel.AreaDetail" Role="AreaDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AreaDetail">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubAreaDetail_AreaDetail">
+          <End Type="ParshvnathModel.AreaDetail" Role="AreaDetail" Multiplicity="0..1" />
+          <End Type="ParshvnathModel.SubAreaDetail" Role="SubAreaDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SubAreaDetail">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingHistory_UserDetail">
+          <End Type="ParshvnathModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+          <End Type="ParshvnathModel.HoardingHistory" Role="HoardingHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="HoardingHistory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HoardingMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CityID" />
+          <Property Type="Int32" Name="AreaID" />
+          <Property Type="Int32" Name="SubAreaID" />
+          <Property Type="Int32" Name="HoardingNo" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <NavigationProperty Name="AreaDetail" Relationship="ParshvnathModel.FK_HoardingMaster_AreaDetail" FromRole="HoardingMaster" ToRole="AreaDetail" />
+          <NavigationProperty Name="CityDetail" Relationship="ParshvnathModel.FK_HoardingMaster_CityDetail" FromRole="HoardingMaster" ToRole="CityDetail" />
+          <NavigationProperty Name="HoardingHistories" Relationship="ParshvnathModel.FK_HoardingHistory_HoardingMaster" FromRole="HoardingMaster" ToRole="HoardingHistory" />
+          <Property Type="String" Name="HoardingSize" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_HoardingMaster_AreaDetail">
+          <End Type="ParshvnathModel.AreaDetail" Role="AreaDetail" Multiplicity="0..1" />
+          <End Type="ParshvnathModel.HoardingMaster" Role="HoardingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AreaDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoardingMaster">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingMaster_CityDetail">
+          <End Type="ParshvnathModel.CityDetail" Role="CityDetail" Multiplicity="0..1" />
+          <End Type="ParshvnathModel.HoardingMaster" Role="HoardingMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityDetail">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoardingMaster">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoardingHistory_HoardingMaster">
+          <End Type="ParshvnathModel.HoardingMaster" Role="HoardingMaster" Multiplicity="0..1" />
+          <End Type="ParshvnathModel.HoardingHistory" Role="HoardingHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoardingMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HoardingHistory">
+              <PropertyRef Name="HoardingMasterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="GetAllHoardingEntry_Result">
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingMasterID" Nullable="true" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewed" Nullable="true" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SubArea" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetHoardingEntryByID_Result">
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SubArea" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+          <Property Type="Int32" Name="SubAreaID" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Boolean" Name="IsRenewed" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CheckPermanentEntryForUpdate_Result">
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="Int32" Name="HoardingMasterID" Nullable="true" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewed" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CheckTemporaryEntryForUpdate_Result">
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="Int32" Name="HoardingMasterID" Nullable="true" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BannerName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="UpdatedDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Boolean" Name="IsRenewed" Nullable="true" />
+          <Property Type="Boolean" Name="IsActive" Nullable="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="vwAdvanceHoardingDetail">
+          <Key>
+            <PropertyRef Name="HoadingHistoryID" />
+          </Key>
+          <Property Type="String" Name="CompanyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FromDate" Precision="7" />
+          <Property Type="DateTime" Name="ToDate" Precision="7" />
+          <Property Type="Decimal" Name="Amount" Precision="19" Scale="4" />
+          <Property Type="Boolean" Name="IsExpired" />
+          <Property Type="String" Name="Type" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BannerName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <Property Type="Boolean" Name="IsPermanent" />
+          <Property Type="Int32" Name="HoardingMasterID" />
+          <Property Type="DateTime" Name="MinDate" Precision="7" />
+        </EntityType>
+        <EntityType Name="vwHoardingDetail">
+          <Key>
+            <PropertyRef Name="HoadingHistoryID" />
+          </Key>
+          <Property Type="String" Name="CompanyName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="FromDate" Precision="7" />
+          <Property Type="DateTime" Name="ToDate" Precision="7" />
+          <Property Type="Decimal" Name="Amount" Precision="19" Scale="4" />
+          <Property Type="Boolean" Name="IsExpired" />
+          <Property Type="String" Name="Type" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BannerName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="false" />
+          <Property Type="Boolean" Name="IsActive" />
+          <Property Type="Boolean" Name="IsDeleted" />
+          <Property Type="Boolean" Name="IsPermanent" />
+          <Property Type="Int32" Name="HoardingMasterID" />
+          <Property Type="DateTime" Name="MaxDate" Precision="7" />
+        </EntityType>
+        <ComplexType Name="GetAdvanceHoardingDetails_Result">
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="area" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="SubArea" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="BannerName" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="HoardingNo" Nullable="true" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="AreaID" Nullable="true" />
+          <Property Type="Int32" Name="SubAreaID" Nullable="true" />
+          <Property Type="String" Name="HoardingSize" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FromDate" Nullable="true" />
+          <Property Type="DateTime" Name="ToDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsExpired" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="19" />
+          <Property Type="Int32" Name="HoadingHistoryID" Nullable="true" />
+          <Property Type="Boolean" Name="IsPermanent" Nullable="true" />
+          <Property Type="String" Name="Type" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParshvnathModelStoreContainer" CdmEntityContainer="ParshvnathEntities">
+          <FunctionImportMapping FunctionImportName="GetHoardingDetails" FunctionName="ParshvnathModel.Store.GetHoardingDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.GetHoardingDetails_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHoardingMaster" FunctionName="ParshvnathModel.Store.GetHoardingMaster">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.GetHoardingMaster_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckPermanentEntry" FunctionName="ParshvnathModel.Store.CheckPermanentEntry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.CheckPermanentEntry_Result">
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckTemporaryEntry" FunctionName="ParshvnathModel.Store.CheckTemporaryEntry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.CheckTemporaryEntry_Result">
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHoardingMasterByID" FunctionName="ParshvnathModel.Store.GetHoardingMasterByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.GetHoardingMasterByID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IsHoardingExsist" FunctionName="ParshvnathModel.Store.IsHoardingExsist">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.IsHoardingExsist_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ParshvnathModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AreaDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.AreaDetail">
+              <MappingFragment StoreEntitySet="AreaDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.CityDetail">
+              <MappingFragment StoreEntitySet="CityDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoardingHistories">
+            <EntityTypeMapping TypeName="ParshvnathModel.HoardingHistory">
+              <MappingFragment StoreEntitySet="HoardingHistory">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetail">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubAreaDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.SubAreaDetail">
+              <MappingFragment StoreEntitySet="SubAreaDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoardingMasters">
+            <EntityTypeMapping TypeName="ParshvnathModel.HoardingMaster">
+              <MappingFragment StoreEntitySet="HoardingMaster">
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllHoardingEntry" FunctionName="ParshvnathModel.Store.GetAllHoardingEntry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.GetAllHoardingEntry_Result">
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHoardingEntryByID" FunctionName="ParshvnathModel.Store.GetHoardingEntryByID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.GetHoardingEntryByID_Result">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckPermanentEntryForUpdate" FunctionName="ParshvnathModel.Store.CheckPermanentEntryForUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.CheckPermanentEntryForUpdate_Result">
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckTemporaryEntryForUpdate" FunctionName="ParshvnathModel.Store.CheckTemporaryEntryForUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.CheckTemporaryEntryForUpdate_Result">
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="IsRenewed" ColumnName="IsRenewed" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="vwAdvanceHoardingDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.vwAdvanceHoardingDetail">
+              <MappingFragment StoreEntitySet="vwAdvanceHoardingDetails">
+                <ScalarProperty Name="MinDate" ColumnName="MinDate" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwHoardingDetails">
+            <EntityTypeMapping TypeName="ParshvnathModel.vwHoardingDetail">
+              <MappingFragment StoreEntitySet="vwHoardingDetails">
+                <ScalarProperty Name="MaxDate" ColumnName="MaxDate" />
+                <ScalarProperty Name="HoardingMasterID" ColumnName="HoardingMasterID" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ExpireHoarding" FunctionName="ParshvnathModel.Store.ExpireHoarding" />
+          <FunctionImportMapping FunctionImportName="ExpireTemporaryHoarding" FunctionName="ParshvnathModel.Store.ExpireTemporaryHoarding" />
+          <FunctionImportMapping FunctionImportName="GetAdvanceHoardingDetails" FunctionName="ParshvnathModel.Store.GetAdvanceHoardingDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ParshvnathModel.GetAdvanceHoardingDetails_Result">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="SubArea" ColumnName="SubArea" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="HoardingNo" ColumnName="HoardingNo" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="SubAreaID" ColumnName="SubAreaID" />
+                <ScalarProperty Name="HoardingSize" ColumnName="HoardingSize" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="HoadingHistoryID" ColumnName="HoadingHistoryID" />
+                <ScalarProperty Name="IsPermanent" ColumnName="IsPermanent" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

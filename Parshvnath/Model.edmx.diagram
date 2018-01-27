@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5b94fdb890542e987f0373c0a33d707" Name="Diagram1" ShowGrid="true" ZoomLevel="114">
+        <EntityTypeShape EntityType="ParshvnathModel.Admin" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="ParshvnathModel.AreaDetail" Width="1.5" PointX="3" PointY="5.375" />
+        <EntityTypeShape EntityType="ParshvnathModel.CityDetail" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="ParshvnathModel.HoardingHistory" Width="1.5" PointX="7.5" PointY="4.125" />
+        <EntityTypeShape EntityType="ParshvnathModel.ReceiptDetail" Width="1.5" PointX="0.75" PointY="2.25" />
+        <EntityTypeShape EntityType="ParshvnathModel.SubAreaDetail" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="ParshvnathModel.UserDetail" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="ParshvnathModel.FK_AreaDetail_CityDetail" />
+        <AssociationConnector Association="ParshvnathModel.FK_SubAreaDetail_AreaDetail" />
+        <AssociationConnector Association="ParshvnathModel.FK_HoardingHistory_UserDetail" />
+        <EntityTypeShape EntityType="ParshvnathModel.HoardingMaster" Width="1.5" PointX="5.125" PointY="5.75" />
+        <AssociationConnector Association="ParshvnathModel.FK_HoardingMaster_AreaDetail" />
+        <AssociationConnector Association="ParshvnathModel.FK_HoardingMaster_CityDetail" />
+        <AssociationConnector Association="ParshvnathModel.FK_HoardingHistory_HoardingMaster" />
+        <EntityTypeShape EntityType="ParshvnathModel.vwAdvanceHoardingDetail" Width="1.5" PointX="7.9037149287311905" PointY="19.70382698797799" />
+        <EntityTypeShape EntityType="ParshvnathModel.vwHoardingDetail" Width="1.5" PointX="8.9069251105687233" PointY="30.730056285266791" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

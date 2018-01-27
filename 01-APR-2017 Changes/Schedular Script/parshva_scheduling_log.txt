@@ -1,0 +1,62 @@
+ "Log file Path :" "F:\sTUDy\@MyWorks\Projects\Parshva Design\01-APR-2017 Changes\Schedular Script\parshva_scheduling_log.txt"  
+ "*******Scheduling script started ON" Mon 04/10/2017 23:33:16.11 
+Changed database context to 'Parshva'.
+ExpireHoarding
+--------------
+             0
+
+(1 rows affected)
+ExpireTemporaryHoarding
+-----------------------
+                      0
+
+(1 rows affected)
+ "******* Scheduling script ENDED ON" Mon 04/10/2017 23:33:44.46 
+ "Log file Path :" "F:\sTUDy\@MyWorks\Projects\Parshva Design\01-APR-2017 Changes\Schedular Script\parshva_scheduling_log.txt"  
+ "*******Scheduling script started ON" Tue 04/11/2017 16:34:20.23 
+Changed database context to 'Parshva'.
+ExpireHoarding
+--------------
+             0
+
+(1 rows affected)
+ExpireTemporaryHoarding
+-----------------------
+                      0
+
+(1 rows affected)
+ "******* Scheduling script ENDED ON" Tue 04/11/2017 16:34:48.66 
+ "Log file Path :" "F:\sTUDy\@MyWorks\Projects\Parshva Design\01-APR-2017 Changes\Schedular Script\parshva_scheduling_log.txt"  
+ "*******Scheduling script started ON" Wed 04/12/2017 23:07:43.91 
+Changed database context to 'Parshva'.
+ExpireHoarding
+--------------
+             0
+
+(1 rows affected)
+ExpireTemporaryHoarding
+-----------------------
+                      0
+
+(1 rows affected)
+ "******* Scheduling script ENDED ON" Wed 04/12/2017 23:07:59.60 
+ "Log file Path :" "F:\sTUDy\@MyWorks\Projects\Parshva Design\01-APR-2017 Changes\Schedular Script\parshva_scheduling_log.txt"  
+ "*******Scheduling script started ON" Mon 04/17/2017 11:58:27.33 
+ "******* Scheduling script ENDED ON" Mon 04/17/2017 11:58:38.82 
+ "Log file Path :" "F:\sTUDy\@MyWorks\Projects\Parshva Design\01-APR-2017 Changes\Schedular Script\parshva_scheduling_log.txt"  
+ "*******Scheduling script started ON" Tue 04/18/2017 11:37:06.21 
+ "******* Scheduling script ENDED ON" Tue 04/18/2017 11:37:22.74 
+ "Log file Path :" "F:\sTUDy\@MyWorks\Projects\Parshva Design\01-APR-2017 Changes\Schedular Script\parshva_scheduling_log.txt"  
+ "*******Scheduling script started ON" Sun 04/23/2017 10:50:25.07 
+Changed database context to 'Parshva'.
+ExpireHoarding
+--------------
+             0
+
+(1 rows affected)
+ExpireTemporaryHoarding
+-----------------------
+                      0
+
+(1 rows affected)
+ "******* Scheduling script ENDED ON" Sun 04/23/2017 10:50:26.44 

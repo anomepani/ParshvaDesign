@@ -1,0 +1,144 @@
+﻿
+
+.mainButton {
+    background-color: #44c767;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    border: 2px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Verdana;
+    font-size: 17px;
+    padding: 12px 1px;
+    text-decoration: none;
+    text-shadow: -1px -2px 6px #2f6627;
+    width: 200px;
+    word-wrap: break-word;
+    height: 60px;
+}
+
+    .mainButton:hover {
+        background-color: #5cbf2a;
+    }
+
+    .mainButton:active {
+        position: relative;
+        top: 1px;
+    }
+
+.lt {
+    float: left;
+}
+
+.rt {
+    float: right;
+}
+
+.btn-panel {
+    width: 30%;
+    height: 100%;
+}
+
+.img-panel {
+    width: 40%;
+    height: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+.btn-logout {
+    background-color: #D3DCE0;
+    border-radius: 0.4em;
+    margin-left: 10px;
+    margin-right: 3px;
+    padding: 6px 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-user {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+.CityCell {
+    background-color: LightGrey;
+    text-align: left;
+    font-size: 26px;
+}
+
+.AreaCell {
+    background-color: rgb(236, 236, 236);
+    text-align: left;
+    margin-left: 10px;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.SubAreaCell {
+    background-color: rgb(236, 236, 236);
+    text-align: left;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.HoardingNoCell {
+    text-align: right;
+    width: 150px;
+    font-size: 50px;
+}
+
+.DarkBlue {
+    background-color: #4fa7ff;
+}
+
+.LightBlue {
+    background-color: #60e9f7;
+}
+
+.LightPink {
+    background-color: #ff00e1;
+}
+
+.active-row {
+    background-color: #54ff8a;
+}
+
+.inactive-row {
+    background-color: #ff6b6b;
+}
+/*Hide banner which is not necessary*/
+#Banner{
+    display:none;
+}
+/*Larger default button and search box*/
+
+#txtSearch{
+        padding: 10px;
+    margin-right: 10px;
+}
+input[type="button"],input[type="submit"]{   
+    
+    padding: 8px;
+    font-size: 16px;
+    background-color: #7c2f6a;
+    border: none;
+    color: #fff;
+    cursor:pointer;
+
+}
+.custom-grid{
+    margin-top:10px;
+}
+fieldset table tr{
+    margin-bottom:2px;
+}
+.is-parent{
+    background:#EFF3B6!important;
+    color:#7c2f6a !important;
+}
